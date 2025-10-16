@@ -11,23 +11,23 @@ jobs:
     runs-on: Agent-1
 
     steps:
-      - name: Checkout code
-      - uses: actions/checkout@v4
+    - name: Checkout code
+    - uses: actions/checkout@v6
 
-      - name: SetUp Node.js     
-        uses: actions/setup-node@v4
-        with:
+    - name: Set up Node.js     
+    - uses: actions/setup-node@v6
+      with:
           node-version: '23'
 
-      - name: Frontend Application (Synatx Check)
-        run: | 
-          cd api  
+    - name: Frontend Application 
+      run: | 
+        cd client  
           find . -name "*.js" -exec node --check {} +
 
-      - name: Backend Application (Synatx Check)
-        run: | 
-          cd client 
-          find . -name "*.js" -exec node --check {} +
+    - name: Backend Application 
+      run: | 
+        cd api 
+        find . -name "*.js" -exec node --check {} +
 
   gitleaks-scan:
     runs-on: Agent-1
