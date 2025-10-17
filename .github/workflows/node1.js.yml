@@ -118,10 +118,10 @@ jobs:
         - name: Build and push Docker image
           uses: docker/build-push-action@v6
           with:
-            context: .
+            context: ./api
             push: true
             tags: namsyjay/backend:latest
-            file: ./api/Dockerfile
+            file: Dockerfile
             
   build_frontend_docker_image_and_push:
       runs-on: ubuntu-latest
@@ -142,7 +142,7 @@ jobs:
         - name: Build and push
           uses: docker/build-push-action@v6
           with:
-            context: .
+            context: ./api
             push: true
             tags: namsyjay/frontend:latest
-            file: ./client/Dockerfile
+            file: Dockerfile
