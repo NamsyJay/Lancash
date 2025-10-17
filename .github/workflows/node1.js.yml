@@ -164,3 +164,14 @@ jobs:
           ignore-unfixed: true
           vuln-type: os,library
           severity: CRITICAL,HIGH
+
+      - name: Run Trivy image scan for frontend
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: image               # 👈 scan container image
+          image-ref: namsyjay/frontend:latest
+          format: table
+          exit-code: '0'              
+          ignore-unfixed: true
+          vuln-type: os,library
+          severity: CRITICAL,HIGH
